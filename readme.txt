@@ -5,6 +5,14 @@ STM32F103マイコンを使用したSCSIダイレクトアクセス
 SDカードにあるHDイメージをSCSI_HDDとして使用でき
 ます。
 
+How to build:
+export ELF=.pio/build/genericSTM32F103CB/firmware.elf
+export LST=firmware.lst
+export SYM=firmware.sym
+export HEX=firmware.hex
+pio run --target clean && pio run && arm-none-eabi-size -A -x ${ELF} && arm-none-eabi-objdump -h -S -C ${ELF} > ${LST}
+
+
 FATファイルシステムのSDカードに以下のいずれかの
 HDイメージファイルを作成してください
 	"SCSI_ID0.HDS",
